@@ -1,6 +1,59 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Logo from './svgs/logo';
+import classNames from 'classnames';
+
+function siteLogoLink({ companyName, navBarLinksPosition }) {
+  return (
+    <Link href="/">
+      <a aria-label={companyName} title={companyName} className={classNames('inline-flex items-center', {
+        'mr-8': navBarLinksPosition === 'left'
+      })}>
+        <Logo />
+        <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">{companyName}</span>
+      </a>
+    </Link>
+  );
+}
+
+function navBarVariants(siteConfig) {
+  const companyName = siteConfig.companyName;
+  const menuLinks = siteConfig.menuLinks;
+  const actionLinks = siteConfig.actionLinks;
+  const navBarLinksPosition = siteConfig.navBarLinksPosition || 'left';
+
+  if (navBarLinksPosition === 'left') {
+    return (
+        <>
+          <div className="flex items-center">
+            {siteLogoLink({ companyName, navBarLinksPosition })}
+            {menuLinks && menuLinks.length > 0 && <ul className="flex items-center hidden space-x-8 lg:flex">{listOfLinks(menuLinks)}</ul>}
+          </div>
+          {actionLinks && actionLinks.length > 0 && <ul className="flex items-center hidden space-x-8 lg:flex">{listOfLinks(actionLinks)}</ul>}
+        </>
+    );
+  } else if (navBarLinksPosition === 'center') {
+    return (
+        <>
+          {siteLogoLink({ companyName, navBarLinksPosition })}
+          {menuLinks && menuLinks.length > 0 && <ul className="flex items-center hidden space-x-8 lg:flex">{listOfLinks(menuLinks)}</ul>}
+          {actionLinks && actionLinks.length > 0 && <ul className="flex items-center hidden space-x-8 lg:flex">{listOfLinks(actionLinks)}</ul>}
+        </>
+    );
+  } else if (navBarLinksPosition === 'right') {
+    const links = (menuLinks || []).concat(actionLinks || []);
+    return (
+        <>
+          {siteLogoLink({ companyName, navBarLinksPosition })}
+          {links.length > 0 && (
+              <ul className="flex items-center hidden space-x-8 lg:flex">
+                {listOfLinks(menuLinks.concat(actionLinks))}
+              </ul>
+          )}
+        </>
+    );
+  }
+}
 
 function listOfLinks(links, inMenu = false) {
   return links.map((link, idx) => (
@@ -32,17 +85,7 @@ export default function NavBar(props) {
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/">
-            <a aria-label={companyName} title={companyName} className="inline-flex items-center mr-8">
-              <Logo />
-              <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">{companyName}</span>
-            </a>
-          </Link>
-          {menuLinks && menuLinks.length > 0 && <ul className="flex items-center hidden space-x-8 lg:flex">{listOfLinks(menuLinks)}</ul>}
-        </div>
-        {actionLinks && actionLinks.length > 0 && <ul className="flex items-center hidden space-x-8 lg:flex">{listOfLinks(actionLinks)}</ul>}
-
+        { navBarVariants(props.siteConfig) }
         <div className="lg:hidden">
           <button
             aria-label="Open Menu"

@@ -298,7 +298,7 @@
         "id": "siteConfig",
         "type": "ContentType",
         "createdAt": "2021-06-02T15:11:41.142Z",
-        "updatedAt": "2021-06-02T15:48:30.707Z",
+        "updatedAt": "2021-06-03T12:58:50.800Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -306,8 +306,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 9,
-        "publishedAt": "2021-06-02T15:48:30.707Z",
+        "publishedVersion": 11,
+        "publishedAt": "2021-06-03T12:58:50.800Z",
         "firstPublishedAt": "2021-06-02T15:11:43.020Z",
         "createdBy": {
           "sys": {
@@ -323,8 +323,8 @@
             "id": "6E6Ltj29MdsXWrgRa6LpfE"
           }
         },
-        "publishedCounter": 5,
-        "version": 10,
+        "publishedCounter": 6,
+        "version": 12,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -355,6 +355,24 @@
           "localized": false,
           "required": false,
           "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "navBarLinksPosition",
+          "name": "NavBar Links Position",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "in": [
+                "left",
+                "center",
+                "right"
+              ]
+            }
           ],
           "disabled": false,
           "omitted": false
@@ -1445,7 +1463,7 @@
             "linkType": "Space"
           }
         },
-        "version": 10,
+        "version": 12,
         "createdAt": "2021-06-02T15:11:43.133Z",
         "createdBy": {
           "sys": {
@@ -1454,7 +1472,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-06-02T15:48:31.417Z",
+        "updatedAt": "2021-06-03T12:58:51.558Z",
         "updatedBy": {
           "sys": {
             "id": "6E6Ltj29MdsXWrgRa6LpfE",
@@ -1486,6 +1504,11 @@
         {
           "fieldId": "companyInfo",
           "widgetId": "markdown",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "navBarLinksPosition",
+          "widgetId": "dropdown",
           "widgetNamespace": "builtin"
         },
         {
@@ -3591,7 +3614,7 @@
         "id": "2l0FO204CSNkexEivMnB6l",
         "type": "Entry",
         "createdAt": "2021-06-02T15:11:54.081Z",
-        "updatedAt": "2021-06-02T15:43:31.793Z",
+        "updatedAt": "2021-06-03T12:59:07.656Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -3599,8 +3622,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 11,
-        "publishedAt": "2021-06-02T15:43:31.793Z",
+        "publishedVersion": 13,
+        "publishedAt": "2021-06-03T12:59:07.656Z",
         "firstPublishedAt": "2021-06-02T15:12:04.142Z",
         "createdBy": {
           "sys": {
@@ -3616,8 +3639,8 @@
             "id": "6E6Ltj29MdsXWrgRa6LpfE"
           }
         },
-        "publishedCounter": 4,
-        "version": 12,
+        "publishedCounter": 5,
+        "version": 14,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -3639,6 +3662,9 @@
         },
         "companyInfo": {
           "en-US": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.\n\nEaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+        },
+        "navBarLinksPosition": {
+          "en-US": "left"
         },
         "menuLinks": {
           "en-US": [
