@@ -112,7 +112,7 @@ export default function Footer(props) {
         {props.siteConfig.copyrightText && <p className="text-sm text-gray-600">{props.siteConfig.copyrightText}</p>}
         {props.siteConfig.legalLinks && props.siteConfig.legalLinks.length > 0 && (
           <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-            {props.siteConfig.legalLinks.map((link, idx) => (
+            {props.siteConfig.legalLinks.map((link = {}, idx) => (
               <li key={idx}>
                 <a key={idx} href={link.url} className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">
                   {link.label}
